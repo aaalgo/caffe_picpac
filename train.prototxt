@@ -8,6 +8,10 @@ layer {
   python_param {
     module: "picpac_data"
     layer: "PicPacDataLayer"
+    param_str: "train.db"
+  }
+  include {
+      phase: TRAIN
   }
 }
 layer {
@@ -255,3 +259,4 @@ layer {
     normalize: true
   }
 }
+
