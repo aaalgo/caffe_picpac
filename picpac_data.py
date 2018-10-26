@@ -40,15 +40,12 @@ class PicPacDataLayer(caffe.Layer):
         pass
 
     def reshape(self, bottom, top):
-        # Copy shape from bottom
         top[0].reshape(BATCH, 3, HEIGHT, WIDTH)
         top[1].reshape(BATCH, HEIGHT, WIDTH)
         pass
 
     def forward(self, bottom, top):
-        # Copy all of the data
         meta, images, labels = self.stream.next()
-        # images is 
         top[0].data[...] = images
         top[1].data[...] = labels[:, 0, :, :]
         pass
