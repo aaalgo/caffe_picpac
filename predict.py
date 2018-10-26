@@ -6,7 +6,7 @@ import caffe
 WIDTH = 640
 HEIGHT = 400
 
-net = caffe.Net('deploy.prototxt', 'snapshots/x_iter_2000.caffemodel', caffe.TEST)
+net = caffe.Net('deploy.prototxt', 'snapshots/x_iter_1000.caffemodel', caffe.TEST)
 
 image = cv2.imread('test.jpg', cv2.IMREAD_COLOR)
 image = cv2.resize(image, (WIDTH,HEIGHT))
@@ -15,6 +15,9 @@ batch = np.transpose(image[np.newaxis, :, :, :], [0, 3, 1, 2])
 net.blobs['data'].data[...] = batch
 out = net.forward()
 prob = out['prob'][0, 1, :, :]  # channel 1 is probability
-cv2.imwrite('prob.jpg', prob * 256)
+print(prob.shape)
+print(np.min(prob), np.max(prob))
+print(np.mean(prob))
+cv2.imwrite('prob.jpg', prob * 255)
 
 

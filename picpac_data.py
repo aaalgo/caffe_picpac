@@ -23,6 +23,11 @@ def create_picpac_stream (path, is_training):
               "order": "NCHW",  # specific to caffe
               "transforms": [
                   {"type": "resize", "width": WIDTH, "height": HEIGHT},
+                  {"type": "augment.flip", "horizontal": True, "vertical": False, "transpose": False},
+                  {"type": "augment.scale", "min":0.8, "max":1.2},
+                  {"type": "augment.rotate", "range": 10},
+                  {"type": "augment.add", "range":20},
+                  {"type": "clip", "width": WIDTH, "height": HEIGHT},
                   {"type": "rasterize"},
                   ]
              }
