@@ -10,7 +10,7 @@ stepvalue: 10000
 gamma: 0.1
 
 # The base learning rate, momentum and the weight decay of the network.
-base_lr: 0.01
+base_lr: 0.001
 momentum: 0.9
 weight_decay: 0.0005
 
@@ -24,6 +24,6 @@ snapshot_prefix: "./snapshots/x"
 # misc settings
 test_initialization: true
 random_seed: 5
-#solver_type: NESTEROV
+solver_type: ADAM
 solver_mode: GPU
 

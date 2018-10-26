@@ -15,9 +15,6 @@ batch = np.transpose(image[np.newaxis, :, :, :], [0, 3, 1, 2])
 net.blobs['data'].data[...] = batch
 out = net.forward()
 prob = out['prob'][0, 1, :, :]  # channel 1 is probability
-print(prob.shape)
-print(np.min(prob), np.max(prob))
-print(np.mean(prob))
 cv2.imwrite('prob.jpg', prob * 255)
 
 
